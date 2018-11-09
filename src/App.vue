@@ -2,6 +2,7 @@
   <div id="app">
     <p>
       <router-link to="/editProject">Go to editProject</router-link>
+      <router-link to="/editor">Go to editor</router-link>
     </p>
     <router-view/>
   </div>

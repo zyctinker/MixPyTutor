@@ -7,13 +7,13 @@
 </template>
 
 <script>
-    const blockOptions = ['for', 'if', 'print', 'range'];
+    const blockOptions = ['controls_for', 'controls_if'];
     export default {
         name: "select-block",
         data() {
           return {
             checkAll: false,
-            checkedBlocks: ['for', 'range'],
+            checkedBlocks: [],
             blocks: blockOptions,
             isIndeterminate: true
           };
@@ -24,7 +24,6 @@
             let checkedCount = value.length;
             console.log(value);
             this.$bus.$emit('renew', {checkedBlocks: value});
-            console.log(this.$bus._data);
             //this.checkAll = checkedCount === this.cities.length;
             //this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
           },
