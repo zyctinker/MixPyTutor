@@ -9,7 +9,7 @@ Vue.use(vuex);
 import edit_store from './edit_store.js';
 
 export default new vuex.Store({
-  module:{
+  modules:{
     edit: edit_store,
   }
 })

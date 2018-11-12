@@ -13,8 +13,12 @@ export default {
     feedback: '',
     checkedBlocks:[],
   },
+  getters: {
+    checkedBlocks: (state) => { return state.checkedBlocks},
+  },
   mutations:{
     changeEditorState(state,payload){//这里的state对应着上面这个state
+      console.log(payload);
       for (var each in payload){
         if(Array.isArray(payload[each])){
           state[each] = payload[each].slice(0);

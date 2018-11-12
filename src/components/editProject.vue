@@ -28,7 +28,6 @@
          */
         var data = {};
         data = Object.assign(data,this.$refs.selectblock._data);
-        console.log(data);
         this.$store.commit('changeEditorState',data);
       }
     },

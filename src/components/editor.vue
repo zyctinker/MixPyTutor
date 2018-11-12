@@ -16,18 +16,19 @@
      </xml>`;*/
     export default {
         name: "editor",
-        data:()=>{
-          return{
-            projectName: '',
+        computed:{
+            /*projectName: '',
             projectDescription: '',
             inputSet: '',
             outputSet: '',
-            feedback: '',
-            checkedBlocks:[],
-          }
+            feedback: '',*/
+            checkedBlocks:function () {
+              return this.$store.getters['checkedBlocks'];
+            },
         },
         mounted: function () {
-          for (var each of this.$store.state['checkedBlocks']){
+          var toolbox = '<xml id="toolbox" style="display: none">';
+          for (var each of this.checkedBlocks){
             toolbox += '<block type="'+ each +'"></block>';
           }
           toolbox += '</xml>';
