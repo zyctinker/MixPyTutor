@@ -4,7 +4,11 @@
       <router-link to="/editProject">Go to editProject</router-link>
       <router-link to="/editor">Go to editor</router-link>
     </p>
-    <router-view/>
+    <transition>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 

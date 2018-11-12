@@ -15,12 +15,18 @@ export default new Router({
     },{
       path:'/editProject',
       name:'editProject',
-      component: editProject
+      component: editProject,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path:'/editor',
       name:'editor',
-      component: editor
+      component: editor,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     }
   ]
 })

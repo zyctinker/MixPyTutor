@@ -1,7 +1,7 @@
 <template>
   <div>
     <input-project-message />
-    <select-block />
+    <select-block ref="selectblock"/>
     <provide-feedback />
     <el-button @click="submitInfo">确定</el-button>
   </div>
@@ -18,16 +18,20 @@
       selectBlock,
       provideFeedback
     },
-
+    created:function () {
+    },
     methods:{
-      submitInfo: ()=>{
+      submitInfo: function(){
         /**
-         * emit renewed information to bus
+         * submit information in this page to store
          * {@param} data JSON{name:value}
          */
-        this.$bus.$emit('renew',data);
+        var data = {};
+        data = Object.assign(data,this.$refs.selectblock._data);
+        console.log(data);
+        this.$store.commit('changeEditorState',data);
       }
-    }
+    },
   };
 </script>
 <style scoped>

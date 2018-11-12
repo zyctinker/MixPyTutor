@@ -22,8 +22,6 @@
         methods: {
           handleCheckedBlocksChange: function (value) {
             let checkedCount = value.length;
-            console.log(value);
-            this.$bus.$emit('renew', {checkedBlocks: value});
             //this.checkAll = checkedCount === this.cities.length;
             //this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
           },
