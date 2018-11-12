@@ -1,6 +1,16 @@
 <template>
   <div>
     <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+    <div id="side_code_top" wrap="off" style="height:49%;">
+      <div id="output_img"  wrap="off" readonly style="position: relative;height:100%;background:#f9f9f9;outline: none;overflow:auto"></div>
+    </div>
+    <div id="side_code_mid"></div>
+    <div id="side_code_bottom" style="height:49%;position:relative">
+      <div style="top: 0px; left: 0px; right: 0px; bottom: 0px; position: absolute;">
+        <pre id="side_code" class="content"  readonly></pre>
+      </div>
+      <input src='media/ban.png' type='image' id="reset_output" onclick="clearOutput();"></input>
+    </div>
   </div>
 </template>
 
