@@ -19,8 +19,10 @@
 <script>
     export default {
         name: "editor",
-        data(){
-          return workspace;
+        data: function(){
+          return {
+            workspace : null
+          };
         },
         computed:{
             /*projectName: '',
@@ -29,24 +31,34 @@
             outputSet: '',
             feedback: '',*/
             checkedBlocks:function () {
-              return this.$store.getters['checkedBlocks'];
+              return this.$store.getters['checkedBlocks'].slice();
             },
         },
         mounted: function () {
-          let pyengine;
-          let py2block_editor;
+          console.log(this.checkedBlocks)
           let toolbox = '<xml id="toolbox" style="display: none">';
           for (var each of this.checkedBlocks){
             toolbox += '<block type="'+ each +'"></block>';
           }
           toolbox += '</xml>';
           console.log(toolbox);
-          let workspace = Blockly.inject('blocklyDiv',
+          this.workspace = Blockly.inject('blocklyDiv',
             {toolbox: toolbox});
+        },
+        updated: function () {
+          console.log('updated!');
+          this.workspace = null;
+          this.workspace = Blockly.inject('blocklyDiv',
+            {toolbox: toolbox});
+          console.log(workspace);
+          delete(doucument.getElementsByClassName('blocklyWidgetDiv')[0]);
+          delete(doucument.getElementsByClassName('blocklyTooltipDiv')[0]);
         },
         methods: {
           runJs: function () {
-            var workspace = null;
+            let code = Blockly.JavaScript.workspaceToCode(this.workspace);
+            console.log(code);
+            eval(code);
           }
         }
     }
