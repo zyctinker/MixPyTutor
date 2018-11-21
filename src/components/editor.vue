@@ -11,7 +11,7 @@
       </div>
       <input src='media/ban.png' type='image' id="reset_output" onclick="clearOutput();"></input>
     </div>
-    <el-button>运行</el-button>
+    <el-button @click="runJs">运行</el-button>
     <el-button>停止</el-button>
   </div>
 </template>
@@ -19,6 +19,9 @@
 <script>
     export default {
         name: "editor",
+        data(){
+          return workspace;
+        },
         computed:{
             /*projectName: '',
             projectDescription: '',
@@ -40,12 +43,11 @@
           console.log(toolbox);
           let workspace = Blockly.inject('blocklyDiv',
             {toolbox: toolbox});
-          let mixpyProject = new MixpyProject();
-          pyengine = new PyEngine({}, mixpyProject);
-          Sk.python3 = true;
         },
         methods: {
-
+          runJs: function () {
+            var workspace = null;
+          }
         }
     }
 </script>

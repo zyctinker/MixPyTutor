@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    const blockOptions = ['controls_for', 'controls_if'];
+    const blockOptions = ['controls_for', 'controls_if', 'actuator_led_bright'];
     export default {
         name: "select-block",
         data() {
