@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import editProject from '@/components/editProject'
 import editor from '@/components/editor'
+import testPythonJs from '@/components/testPythonJs'
 
 Vue.use(Router)
 
@@ -26,6 +27,6 @@ export default new Router({
       meta: {
         keepAlive: true // 需要被缓存
       }
-    }
+    },
   ]
 })

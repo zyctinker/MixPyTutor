@@ -11,19 +11,12 @@
       </div>
       <input src='media/ban.png' type='image' id="reset_output" onclick="clearOutput();"></input>
     </div>
+    <el-button>运行</el-button>
+    <el-button>停止</el-button>
   </div>
 </template>
 
 <script>
-    /*const toolbox = `<xml id="toolbox" style="display: none">
-     <block type="controls_if"></block>
-     <block type="controls_repeat_ext"></block>
-     <block type="logic_compare"></block>
-     <block type="math_number"></block>
-     <block type="math_arithmetic"></block>
-     <block type="text"></block>
-     <block type="text_print"></block>
-     </xml>`;*/
     export default {
         name: "editor",
         computed:{
@@ -37,7 +30,9 @@
             },
         },
         mounted: function () {
-          var toolbox = '<xml id="toolbox" style="display: none">';
+          let pyengine;
+          let py2block_editor;
+          let toolbox = '<xml id="toolbox" style="display: none">';
           for (var each of this.checkedBlocks){
             toolbox += '<block type="'+ each +'"></block>';
           }
@@ -45,6 +40,9 @@
           console.log(toolbox);
           let workspace = Blockly.inject('blocklyDiv',
             {toolbox: toolbox});
+          let mixpyProject = new MixpyProject();
+          pyengine = new PyEngine({}, mixpyProject);
+          Sk.python3 = true;
         },
         methods: {
 
