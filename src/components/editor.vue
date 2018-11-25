@@ -33,6 +33,9 @@
             checkedBlocks:function () {
               return this.$store.getters['checkedBlocks'].slice();
             },
+            checkCode:function () {
+              return this.$store.getters['checkedCode'];
+            },
         },
         mounted: function () {
           console.log(this.checkedBlocks)
@@ -55,7 +58,11 @@
           delete(doucument.getElementsByClassName('blocklyTooltipDiv')[0]);
         },
         methods: {
-          runJs: function () {
+        /**
+         * eval the code in Blockly workspace
+         */
+        runJs: function () {
+            window.VMchecker.getCheckCode = this.checkcode;
             let code = Blockly.JavaScript.workspaceToCode(this.workspace);
             console.log(code);
             eval(code);

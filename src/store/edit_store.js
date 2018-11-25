@@ -12,9 +12,11 @@ export default {
     outputSet: '',
     feedback: '',
     checkedBlocks:[],
+    checkCode: '',
   },
   getters: {
     checkedBlocks: (state) => { return state.checkedBlocks},
+    checkCode: (state) => { return state.checkCode},
   },
   mutations:{
     changeEditorState(state,payload){//这里的state对应着上面这个state
