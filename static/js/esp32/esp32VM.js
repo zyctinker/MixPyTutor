@@ -15,43 +15,44 @@ mixgo.led = {
     return this['led'+ op];
   }
 }
-time = {
+let time = {
   currentTime : 0,
-  getcurrentTime: function () {
+  getCurrentTime: function () {
     return this.currentTime;
   },
   sleep: function(sleeptime){
     //check before add currentTime
-    check(window.checkcode);
+    check();
     this.currentTime += sleeptime;
   }
 }
   /**
    * check the result accroding to time and given condition in editProject Page
    */
-  /
-function checker() {
+function Checker() {
   this.checkpointList = [];//Every time we call assert, make a new checkpoint and add it to checkpointList
   this.flag = true; // if any checkpoint failed, it will become false
-  this.checkcode = ''; //checkcode from editProject Page's Blockly workspace
-};
+  this.checkCode = ''; //checkcode from editProject Page's Blockly workspace
+}
 /*
  * get check code from editProject page
  */
-checker.prototype.getCheckCode = function (checkcode) {
-  this.checkcode = checkcode;
+Checker.prototype.getCheckCode = function (checkcode) {
+  this.checkCode = checkcode;
 };
 /*
  * assert whether status meets the check condition
  */
-checker.prototype.assert = function (realValue, idealValue) {
+Checker.prototype.assert = function (realValue, idealValue) {
   if(realValue === idealValue){
     this.checkpointList.push(true);
+    return true;
   }
   else{
     this.checkpointList.push(false);
     this.flag = false;
+    return false;
   }
 };
 
-let VMchecker = new checker();
+let VMchecker = new Checker();

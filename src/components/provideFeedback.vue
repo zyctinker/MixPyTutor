@@ -1,23 +1,12 @@
 <template>
   <div>
     <el-input
-    type="textarea"
-    :rows="2"
-    placeholder="请输入测试集"
-    v-model="inputSet">
-  </el-input>
-    <el-input
       type="textarea"
       :rows="2"
-      placeholder="请输入测试结果"
-      v-model="outputSet">
-    </el-input>
-    <el-input
-      type="textarea"
-      :rows="2"
-      placeholder="请输入反馈"
+      placeholder="请输入反馈,多条反馈之间以;结尾"
       v-model="feedback">
     </el-input>
+    <div id="blocklyDiv" style="height: 480px; width: 800px;"></div>
   </div>
 
 </template>
@@ -27,9 +16,15 @@
         name: "provide-feedback",
         data(){
           return{
-            inputSet: '',
-            outputSet: '',
             feedback: ''
+          }
+        },
+        computed:{
+          procedures: function () {
+            return null;
+          },
+          labels: function () {
+            return this.feedback.split(';');
           }
         }
     }

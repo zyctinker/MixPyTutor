@@ -819,18 +819,18 @@ Blockly.MIXLY_NOVA_BTN = '按钮';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
 Blockly.MIXLY_NOVA_TILTSWITCH = '倾斜开关';
-Blockly.MIXLY_NOVA_SOUND = '声音传感器'; 
-Blockly.MIXLY_NOVA_LIMISWICTH = '限位开关'; 
-Blockly.MIXLY_NOVA_LIGHT = '光敏'; 
+Blockly.MIXLY_NOVA_SOUND = '声音传感器';
+Blockly.MIXLY_NOVA_LIMISWICTH = '限位开关';
+Blockly.MIXLY_NOVA_LIGHT = '光敏';
 
-Blockly.MIXLY_NOVA_BUZZER = '蜂鸣器'; 
-Blockly.MIXLY_NOVA_FREQUENCY = '频率(Hz)'; 
-Blockly.MIXLY_NOVA_MIXLY_DURATION = '持续时间(ms)'; 
+Blockly.MIXLY_NOVA_BUZZER = '蜂鸣器';
+Blockly.MIXLY_NOVA_FREQUENCY = '频率(Hz)';
+Blockly.MIXLY_NOVA_MIXLY_DURATION = '持续时间(ms)';
 
-Blockly.MIXLY_NOVA_MOTOR = '直流电机'; 
-Blockly.MIXLY_NOVA_MOTOR_SPEED = '转速(-100~100)%'; 
+Blockly.MIXLY_NOVA_MOTOR = '直流电机';
+Blockly.MIXLY_NOVA_MOTOR_SPEED = '转速(-100~100)%';
 
-Blockly.MIXLY_NOVA_ULTRASONIC = '超声波测距(cm)'; 
+Blockly.MIXLY_NOVA_ULTRASONIC = '超声波测距(cm)';
 
 Blockly.MIXLY_NOVA_DHT11 = '温湿度';
 Blockly.MIXLY_NOVA_TYPE = '类型';
@@ -1373,7 +1373,7 @@ Blockly.Msg.DICTS_DELETE_IN = "中删除条目 键";
 Blockly.Msg.DICTS_DELETE_VALUE = "及对应值";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "删除字典中某个条目";
 Blockly.Msg.DICT_CLEAR = "清空字典中所有条目";
-Blockly.Msg.DICT_ITEMS = "字典转化为列表"; 
+Blockly.Msg.DICT_ITEMS = "字典转化为列表";
 Blockly.Msg.DICTS_ITEMS_TOOLTIP = "返回一个列表，包括一个字典可遍历的所有键和对应值";
 Blockly.Msg.DICT_VALUES = "获取所有键对应的值";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一个列表，包括一个字典所有键的对应值";
@@ -1979,3 +1979,7 @@ Blockly.MIXLY_ESP32_MUSIC_WAIT='等待'
 Blockly.MIXLY_ESP32_MUSIC_LOOP='循环'
 Blockly.MIXLY_ESP32_MIXGO_MUSIC_PLAY_TONE='显示音符'
 Blockly.MIXLY_ESP32_MIXGO_MUSIC_SHOW_IN='在'
+
+
+Blockly.MIXLY_CHECKASSERT = '断言';
+Blockly.MIXLY_ISEQUAL = '是否等于';

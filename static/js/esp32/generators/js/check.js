@@ -10,3 +10,7 @@ Blockly.JavaScript.check_assert = function () {
   let code = 'VMchecker.assert('+ pin +',' + value + ');\n';
   return code;
 };
+Blockly.JavaScript.check_getTime= function() {
+  var code = "time.getCurrentTime()";
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};

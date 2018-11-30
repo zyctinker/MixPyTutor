@@ -1,5 +1,5 @@
 <template>
-  <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+  <div id="blocklyDiv2" style="height: 480px; width: 1000px;"></div>
 </template>
 
 <script>
@@ -8,7 +8,7 @@
       data() {
         return {
           workspace: null,
-          checkcode: '',
+          checkCode: '',
         };
       },
       mounted: function () {
@@ -49,15 +49,17 @@
           '        </value>\n' +
           '      </block>'+
           '<block type="actuator_get_led_bright"></block>\n'+
-          '<block type="check_assert"></block>\n'
+          '<block type="check_assert"></block>\n'+
+          '<block type="check_getTime"></block>\n'
           '</xml>';
-        this.workspace = Blockly.inject('blocklyDiv',
+        this.workspace = Blockly.inject('blocklyDiv2',
           {toolbox: toolbox});
       },
       methods:{
-        getCodeFromWorkspace: function () {
-          this.checkcode = Blockly.JavaScript.workspaceToCode(this.workspace);
-        }
+        getCodeFromWorkspace: function(){
+          this.checkCode = Blockly.JavaScript.workspaceToCode(this.workspace);
+        },
+
       },
     }
 </script>

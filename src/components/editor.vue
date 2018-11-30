@@ -34,7 +34,7 @@
               return this.$store.getters['checkedBlocks'].slice();
             },
             checkCode:function () {
-              return this.$store.getters['checkedCode'];
+              return this.$store.getters['checkCode'];
             },
         },
         mounted: function () {
@@ -50,22 +50,16 @@
         },
         updated: function () {
           console.log('updated!');
-          this.workspace = null;
-          this.workspace = Blockly.inject('blocklyDiv',
-            {toolbox: toolbox});
-          console.log(workspace);
-          delete(doucument.getElementsByClassName('blocklyWidgetDiv')[0]);
-          delete(doucument.getElementsByClassName('blocklyTooltipDiv')[0]);
         },
         methods: {
         /**
          * eval the code in Blockly workspace
          */
         runJs: function () {
-            window.VMchecker.getCheckCode = this.checkcode;
+            console.log(this.checkCode);
             let code = Blockly.JavaScript.workspaceToCode(this.workspace);
             console.log(code);
-            eval(code);
+            eval(code+this.checkCode);
           }
         }
     }
