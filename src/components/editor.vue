@@ -11,6 +11,7 @@
       </div>
       <input src='media/ban.png' type='image' id="reset_output" onclick="clearOutput();"></input>
     </div>
+    <div id="report-result">{{this.result}}</div>
     <el-button @click="runJs">运行</el-button>
     <el-button>停止</el-button>
   </div>
@@ -21,7 +22,8 @@
         name: "editor",
         data: function(){
           return {
-            workspace : null
+            workspace : null,
+            result: '',
           };
         },
         computed:{
@@ -48,18 +50,23 @@
           this.workspace = Blockly.inject('blocklyDiv',
             {toolbox: toolbox});
         },
-        updated: function () {
-          console.log('updated!');
-        },
         methods: {
         /**
          * eval the code in Blockly workspace
          */
         runJs: function () {
-            console.log(this.checkCode);
+            //get code from Blockly workspace
             let code = Blockly.JavaScript.workspaceToCode(this.workspace);
-            console.log(code);
+            //eval code
             eval(code+this.checkCode);
+            //report result
+            this.result = VMchecker.flag?'正确':'错误';
+            let xmlDom = Blockly.Xml.workspaceToDom(this.workspace);
+            let xmlText = Blockly.Xml.domToPrettyText(xmlDom)
+            let commitData = {
+              blocksInEditor: xmlText,
+            }
+            this.$store.commit('changeEditorState',commitData);
           }
         }
     }

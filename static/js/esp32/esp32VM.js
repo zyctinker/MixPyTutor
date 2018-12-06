@@ -54,5 +54,10 @@ Checker.prototype.assert = function (realValue, idealValue) {
     return false;
   }
 };
-
+/*
+ * report check result after eval(code)
+ */
+Checker.prototype.report = function () {
+  Vue.set('editor',result,this.flag?'正确':'错误');
+}
 let VMchecker = new Checker();

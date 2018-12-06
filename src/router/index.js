@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import review from '@/components/review'
 import editProject from '@/components/editProject'
 import editor from '@/components/editor'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -23,6 +23,14 @@ export default new Router({
       path:'/editor',
       name:'editor',
       component: editor,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
+    },
+    {
+      path:'/review',
+      name:'review',
+      component: review,
       meta: {
         keepAlive: true // 需要被缓存
       }

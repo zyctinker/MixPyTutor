@@ -3,6 +3,7 @@
     <p>
       <router-link to="/editProject">Go to editProject</router-link>
       <router-link to="/editor">Go to editor</router-link>
+      <router-link to="/review">Go to review</router-link>
     </p>
     <transition>
       <keep-alive>

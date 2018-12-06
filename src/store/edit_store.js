@@ -13,10 +13,12 @@ export default {
     feedback: '',
     checkedBlocks:[],
     checkCode: '',
+    blocksInEditor:'',
   },
   getters: {
     checkedBlocks: (state) => { return state.checkedBlocks},
     checkCode: (state) => { return state.checkCode},
+    blocksInEditor: (state) => { return state.blocksInEditor},
   },
   mutations:{
     changeEditorState(state,payload){//这里的state对应着上面这个state
