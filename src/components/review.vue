@@ -7,7 +7,7 @@
       placeholder="请输入内容"
       v-model="textarea">
     </el-input>
-    <div id="blocklyDiv3" style="height: 480px; width: 600px;"></div>
+    <div id="blocklyDiv3"></div>
     <el-checkbox-group  v-model="selectTags">
       <el-checkbox-button
         v-for="(tag,index) in tags"
@@ -48,6 +48,29 @@
           let xmlDom = Blockly.Xml.textToDom(this.xmlText);
           Blockly.Xml.domToWorkspace(xmlDom,this.workspace);
         }
+        var blocklyArea = document.getElementById('app');
+        var blocklyDiv = document.getElementById('blocklyDiv3');
+        let self = this;
+        var onresize = function(e) {
+          // Compute the absolute coordinates and dimensions of blocklyArea.
+          var element = blocklyArea;
+          var x = 0;
+          var y = 0;
+          do {
+            x += element.offsetLeft;
+            y += element.offsetTop;
+            element = element.offsetParent;
+          } while (element);
+          // Position blocklyDiv over blocklyArea.
+          blocklyDiv.style.left = x + 'px';
+          blocklyDiv.style.top = y + 'px';
+          blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+          blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+          Blockly.svgResize(self.workspace);
+        };
+        window.addEventListener('resize', onresize, false);
+        onresize();
+        Blockly.svgResize(this.workspace);
       },
       beforeUpdate: function () {
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+    <div id="blocklyDiv"></div>
     <div id="side_code_top" wrap="off" style="height:49%;">
       <div id="output_img"  wrap="off" readonly style="position: relative;height:100%;background:#f9f9f9;outline: none;overflow:auto"></div>
     </div>
@@ -46,9 +46,31 @@
             toolbox += '<block type="'+ each +'"></block>';
           }
           toolbox += '</xml>';
-          console.log(toolbox);
           this.workspace = Blockly.inject('blocklyDiv',
             {toolbox: toolbox});
+          var blocklyArea = document.getElementById('app');
+          var blocklyDiv = document.getElementById('blocklyDiv');
+          var self = this;
+          var onresize = function(e) {
+            // Compute the absolute coordinates and dimensions of blocklyArea.
+            var element = blocklyArea;
+            var x = 0;
+            var y = 0;
+            do {
+              x += element.offsetLeft;
+              y += element.offsetTop;
+              element = element.offsetParent;
+            } while (element);
+            // Position blocklyDiv over blocklyArea.
+            blocklyDiv.style.left = x + 'px';
+            blocklyDiv.style.top = y + 'px';
+            blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+            blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+            Blockly.svgResize(self.workspace);
+          };
+          window.addEventListener('resize', onresize, false);
+          onresize();
+          Blockly.svgResize(this.workspace);
         },
         methods: {
         /**

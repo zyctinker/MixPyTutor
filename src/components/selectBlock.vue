@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    const blockOptions = ['controls_for', 'controls_if', 'actuator_led_bright','math_number','controls_delay'];
+    const blockOptions = ['controls_for', 'controls_if', 'actuator_led_bright','math_number','controls_delay','variables_get'];
     export default {
         name: "select-block",
         data() {

@@ -12,7 +12,7 @@
         };
       },
       mounted: function () {
-        const toolbox = '<xml id="toolbox" style="display: none">'+
+        let toolbox = '<xml id="toolbox" style="display: none">'+
           '<block type="controls_if"></block>\n' +
           '<block type="logic_compare"></block>\n'+
           '<block type="controls_whileUntil"></block>\n'+
@@ -50,10 +50,35 @@
           '      </block>'+
           '<block type="actuator_get_led_bright"></block>\n'+
           '<block type="check_assert"></block>\n'+
-          '<block type="check_getTime"></block>\n'
+          '<block type="check_getTime"></block>\n'+
+          '<block type="variables_get"></block>\n'+
+          '<block type="math_arithmetic"></block>\n'+
           '</xml>';
         this.workspace = Blockly.inject('blocklyDiv2',
           {toolbox: toolbox});
+        var self = this;
+        var blocklyArea = document.getElementById('app');
+        var blocklyDiv = document.getElementById('blocklyDiv2');
+        var onresize = function(e) {
+          // Compute the absolute coordinates and dimensions of blocklyArea.
+          var element = blocklyArea;
+          var x = 0;
+          var y = 0;
+          do {
+            x += element.offsetLeft;
+            y += element.offsetTop;
+            element = element.offsetParent;
+          } while (element);
+          // Position blocklyDiv over blocklyArea.
+          blocklyDiv.style.left = x + 'px';
+          blocklyDiv.style.top = y + 'px';
+          blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+          blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+          Blockly.svgResize(self.workspace);
+        };
+        window.addEventListener('resize', onresize, false);
+        onresize();
+        Blockly.svgResize(this.workspace);
       },
       methods:{
         getCodeFromWorkspace: function(){
