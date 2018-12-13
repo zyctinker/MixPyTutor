@@ -5,12 +5,12 @@
     </el-header>
 
     <el-main>
-      <slideshow />
-      <div>热门课程</div>
+      <div>我的课程</div>
       <div class="displayCard">
         <el-row :gutter="40">
           <el-col :span="6" v-for="(course,index) in courses" :key="index">
           <el-card>
+            <router-link to="/editProject">
             <img src="\static\media\image\Logo_Mixly.png" class="image">
             <div style="padding: 14px;">
               <span>{{course}}</span>
@@ -19,6 +19,7 @@
                 <time class="time">2018-09-01</time>
               </div>
             </div>
+            </router-link>
           </el-card>
         </el-col>
         </el-row>
