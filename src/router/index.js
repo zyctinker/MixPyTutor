@@ -6,6 +6,7 @@ import myCourse from '@/components/myCourse'
 import review from '@/components/review'
 import editProject from '@/components/editProject'
 import editor from '@/components/editor'
+import courseDetail from '@/components/courseDetail'
 
 Vue.use(Router);
 
@@ -47,6 +48,14 @@ export default new Router({
       path:'/myCourse',
       name:'myCourse',
       component: myCourse,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
+    }
+    ,{
+      path:'/myCourse/courseDetail',
+      name:'courseDetail',
+      component: courseDetail,
       meta: {
         keepAlive: true // 需要被缓存
       }

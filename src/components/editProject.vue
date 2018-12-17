@@ -1,12 +1,21 @@
 <template>
-  <div>
-    <input-project-message />
-    <select-block ref="selectblock"/>
-    <provide-check-condition ref="providecheckcondition" />
-    <el-button @click="submitInfo">确定</el-button>
-  </div>
+  <el-container>
+    <el-header>
+      <headbar></headbar>
+    </el-header>
+    <el-main>
+      <h2>创建任务</h2>
+      <input-project-message></input-project-message>
+      <select-block ref="selectblock"/>
+      <provide-check-condition ref="providecheckcondition" />
+      <el-row>
+        <el-button @click="submitInfo">确定</el-button>
+      </el-row>
+    </el-main>
+  </el-container>
 </template>
 <script>
+  import headbar from '@/components/headbar';
   import inputProjectMessage from '@/components/inputProjectMessage';
   import selectBlock from '@/components/selectBlock';
   import provideCheckCondition from '@/components/provideCheckCondition';
@@ -16,7 +25,8 @@
     components: {
       inputProjectMessage,
       selectBlock,
-      provideCheckCondition
+      provideCheckCondition,
+      headbar,
     },
     created:function () {
     },

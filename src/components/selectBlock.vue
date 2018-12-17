@@ -1,24 +1,26 @@
 <template>
   <div>
-      <div id="provided-blocks">
-        <div>提供的块</div>
+    <el-row type="flex"  justify="start">
+        <el-col :span="2">提供的块</el-col>
         <el-checkbox-group v-model="checkedBlocks" @change="handleCheckedBlocksChange">
           <el-checkbox v-for="block in blocks" :label="block" :key="block">{{block}}</el-checkbox>
         </el-checkbox-group>
-      </div>
-    <div id="d-blocks">
-      <div>必须的块</div>
-      <el-checkbox-group v-model="requiredBlocks" @change="handleCheckedBlocksChange">
-        <el-checkbox v-for="block in checkedBlocks" :label="block" :key="block">{{block}}</el-checkbox>
-      </el-checkbox-group>
-    </div>
+    </el-row>
+    <el-row type="flex"  justify="start">
+      <el-col :span="2">必须的块</el-col>
+        <el-checkbox-group v-model="requiredBlocks" @change="handleCheckedBlocksChange">
+          <el-checkbox v-for="block in checkedBlocks" :label="block" :key="block">{{block}}</el-checkbox>
+        </el-checkbox-group>
+    </el-row>
   </div>
 </template>
 
 <script>
+  import ElContainer from "../../node_modules/element-ui/packages/container/src/main";
     const blockOptions = ['controls_for', 'controls_if', 'actuator_led_bright','math_number','controls_delay','variables_get'];
     export default {
-        name: "select-block",
+      components: {ElContainer},
+      name: "select-block",
         data() {
           return {
             checkAll: false,

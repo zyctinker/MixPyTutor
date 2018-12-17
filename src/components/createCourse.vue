@@ -8,7 +8,7 @@
         <el-row>
           <el-col :span="6">课程名称</el-col >
           <el-col :span="12">
-            <el-input  v-model="courseName">></el-input>
+            <el-input  v-model="courseName"></el-input>
           </el-col >
         </el-row>
         <el-row>
@@ -31,9 +31,7 @@
             </el-date-picker>
           </el-col >
         </el-row>
-        <el-row v-for="i in 5"><div>&nbsp;</div>
-        </el-row>
-        <el-row>
+        <el-row class="row-with-space">
           <el-button>确定</el-button>
         </el-row>
       </el-main>
@@ -58,7 +56,10 @@
 </script>
 
 <style scoped>
-.date-picker-full-width{
-  width: 100%;
-}
+  .date-picker-full-width{
+    width: 100%;
+  }
+  .row-with-space{
+    margin-top: 40px;
+  }
 </style>

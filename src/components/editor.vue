@@ -1,30 +1,55 @@
 <template>
-  <div>
-    <div id="blocklyDiv"></div>
-    <div id="side_code_top" wrap="off" style="height:49%;">
-      <div id="output_img"  wrap="off" readonly style="position: relative;height:100%;background:#f9f9f9;outline: none;overflow:auto"></div>
-    </div>
-    <div id="side_code_mid"></div>
-    <div id="side_code_bottom" style="height:49%;position:relative">
-      <div style="top: 0px; left: 0px; right: 0px; bottom: 0px; position: absolute;">
-        <pre id="side_code" class="content"  readonly></pre>
-      </div>
-      <input src='media/ban.png' type='image' id="reset_output" onclick="clearOutput();"></input>
-    </div>
-    <div id="report-result">{{this.result}}</div>
-    <el-button @click="runJs">运行</el-button>
-    <el-button>停止</el-button>
-  </div>
+  <el-container>
+    <el-header>
+      <headbar></headbar>
+      <h2>{{ProjectName}}</h2>
+    </el-header>
+    <el-container>
+      <el-aside width="300px">
+        <div>
+          <img height="240" width="300" src="\static\media\image\microbit.jpg" alt='123' class="image"/>
+          <div class="row-with-space">
+            <div id="report-result">{{this.result}}</div>
+            <el-button @click="runJs">模拟运行</el-button>
+            <el-button @click="runJs">上传运行</el-button>
+            <el-button>停止</el-button>
+          </div>
+        </div>
+      </el-aside>
+      <el-main>
+        <div>
+          <div id="blocklyDiv" height="auto" width="auto"></div>
+        </div>
+        <el-dialog title="任务简介" :visible.sync="dialogVisible">
+            <el-row><div>这是任务简介</div></el-row>
+            <el-row> <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=j0714ooncb2" allowFullScreen="true" height="320" width="480"></iframe></el-row>
+            <el-row><el-button type="primary" @click="dialogVisible = false">确定</el-button></el-row>
+        </el-dialog>
+      </el-main>
+    </el-container>
+  </el-container>
+
+
 </template>
 
 <script>
+  import headbar from '@/components/headbar.vue'
+  import ElContainer from "../../node_modules/element-ui/packages/container/src/main";
+  import ElHeader from "../../node_modules/element-ui/packages/header/src/main";
     export default {
-        name: "editor",
-        data: function(){
+      components: {
+        ElHeader,
+        ElContainer,
+        headbar,
+      },
+      name: "editor",
+        data() {
           return {
             workspace : null,
             result: '',
-          };
+            ProjectName:'任务一',
+            dialogVisible: false,
+          }
         },
         computed:{
             /*projectName: '',
@@ -71,6 +96,7 @@
           window.addEventListener('resize', onresize, false);
           onresize();
           Blockly.svgResize(this.workspace);
+          this.dialogVisible = true;
         },
         methods: {
         /**
@@ -95,5 +121,7 @@
 </script>
 
 <style scoped>
-
+  .row-with-space{
+    margin-top: 40px;
+  }
 </style>

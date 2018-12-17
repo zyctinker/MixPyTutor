@@ -1,10 +1,15 @@
 <template>
-  <div id="blocklyDiv2" style="height: 480px; width: 1000px;"></div>
+  <el-container>
+    <el-row>
+      <div id="blocklyDiv2" style="height: 480px; width: 1000px;"></div>
+    </el-row>
+  </el-container>
+
 </template>
 
 <script>
     export default {
-        name: "provide-check-condition",
+      name: "provide-check-condition",
       data() {
         return {
           workspace: null,

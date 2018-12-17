@@ -13,6 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "html-loader": "^0.5.5",
     "jquery": "^3.3.1",
     "python-js": "^0.9.8",
     "vue": "^2.5.2",
