@@ -12,8 +12,8 @@
         <el-menu-item index="1">首页</el-menu-item>
         <el-submenu index="2">
           <template slot="title">课程</template>
-          <el-menu-item index="2-1"><a herf="./creatCourse">创建课程</a></el-menu-item>
-          <el-menu-item index="2-2"><a herf="./myCourse">我的课程</a></el-menu-item>
+          <el-menu-item index="2-1"><router-link to="/createCourse">创建课程</router-link></el-menu-item>
+          <el-menu-item index="2-2"><router-link to="/myCourse">我的课程</router-link></el-menu-item>
         </el-submenu>
         <el-menu-item index="3">我的</el-menu-item>
         <el-menu-item class="right-align">

@@ -10,7 +10,7 @@
         <el-row :gutter="40">
           <el-col :span="6" v-for="(course,index) in courses" :key="index">
           <el-card>
-            <router-link to="/courseDetail">
+            <router-link to="/myCourse/courseDetail">
             <img src="\static\media\image\Logo_Mixly.png" class="image">
             <div style="padding: 14px;">
               <span>{{course}}</span>
