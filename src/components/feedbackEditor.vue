@@ -20,9 +20,9 @@
         <div>
           <div id="blocklyDiv" height="auto" width="auto"></div>
         </div>
-        <el-dialog title="任务简介" :visible.sync="dialogVisible">
-            <el-row><div>制作一个呼吸灯，在2048ms内亮度从最低均匀变化到最高，再从最高均匀变化到最低</div></el-row>
-            <el-row> <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=j0714ooncb2" allowFullScreen="true" height="320" width="480"></iframe></el-row>
+        <el-dialog title="消息" :visible.sync="dialogVisible">
+            <el-row type="flex" justify="start"><div>您的程序存在以下问题：</div></el-row>
+            <el-row type="flex" justify="start"><div v-for="tag in feedback">{{tag}}</div></el-row>
             <el-row><el-button type="primary" @click="dialogVisible = false">确定</el-button></el-row>
         </el-dialog>
       </el-main>
@@ -48,7 +48,7 @@
             workspace : null,
             result: '',
             ProjectName:'任务一',
-            dialogVisible: false,
+            dialogVisible: true,
           }
         },
         computed:{
@@ -63,9 +63,12 @@
             checkCode:function () {
               return this.$store.getters['checkCode'];
             },
+            feedback:function () {
+              return this.$store.getters['selectTags'];
+            },
         },
         mounted: function () {
-          console.log(this.checkedBlocks)
+          console.log(this.feedback)
           let toolbox = '<xml id="toolbox" style="display: none">';
           for (var each of this.checkedBlocks){
             toolbox += '<block type="'+ each +'"></block>';

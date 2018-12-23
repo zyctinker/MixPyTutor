@@ -11,6 +11,10 @@
       <el-row>
         <el-button @click="submitInfo">确定</el-button>
       </el-row>
+      <el-dialog title="提示" :visible.sync="dialogVisible">
+        <el-row><div>任务生成成功，连接为localhost:8080/#/editor?id=1</div></el-row>
+        <el-row><el-button type="primary" @click="dialogVisible = false">确定</el-button></el-row>
+      </el-dialog>
     </el-main>
   </el-container>
 </template>
@@ -28,6 +32,11 @@
       provideCheckCondition,
       headbar,
     },
+    data(){
+      return{
+        dialogVisible:false,
+      }
+    },
     created:function () {
     },
     methods:{
@@ -41,6 +50,7 @@
         var data = {};
         data = Object.assign(data,this.$refs.selectblock._data,this.$refs.providecheckcondition._data);
         this.$store.commit('changeEditorState',data);
+        this.dialogVisible = true;
       }
     },
   };

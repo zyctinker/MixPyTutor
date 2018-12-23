@@ -7,9 +7,11 @@ import vuex from 'vuex'
 Vue.use(vuex);
 
 import edit_store from './edit_store.js';
+import review_store from './review_store.js';
 
 export default new vuex.Store({
   modules:{
     edit: edit_store,
+    review: review_store,
   }
 })

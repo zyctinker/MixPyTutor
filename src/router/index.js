@@ -4,9 +4,11 @@ import HelloWorld from '@/components/HelloWorld'
 import createCourse from '@/components/createCourse'
 import myCourse from '@/components/myCourse'
 import review from '@/components/review'
+import feedbackEditor from '@/components/feedbackEditor'
 import editProject from '@/components/editProject'
 import editor from '@/components/editor'
 import courseDetail from '@/components/courseDetail'
+import studentProjectView from '@/components/studentProjectView'
 
 Vue.use(Router);
 
@@ -37,6 +39,13 @@ export default new Router({
       meta: {
         keepAlive: true // 需要被缓存
       }
+    }, {
+      path:'/feedback-editor',
+      name:'feedback-editor',
+      component: feedbackEditor,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },{
       path:'/createCourse',
       name:'createCourse',
@@ -51,14 +60,17 @@ export default new Router({
       meta: {
         keepAlive: true // 需要被缓存
       }
-    }
-    ,{
+    },{
       path:'/myCourse/courseDetail',
       name:'courseDetail',
       component: courseDetail,
       meta: {
         keepAlive: true // 需要被缓存
       }
+    },{
+      path:'/student-project-view',
+      name:'student-project-view',
+      component: studentProjectView,
     }
   ]
 })

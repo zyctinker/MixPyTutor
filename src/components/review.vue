@@ -1,25 +1,56 @@
 <template>
-  <div>
-    <div>请输入反馈标签，以分号分割</div>
-    <el-input
-      type="textarea"
-      autosize
-      placeholder="请输入内容"
-      v-model="textarea">
-    </el-input>
-    <div id="blocklyDiv3"></div>
-    <el-checkbox-group  v-model="selectTags">
-      <el-checkbox-button
-        v-for="(tag,index) in tags"
-        :label="tag"
-        :key="index">
-        {{tag}}
-      </el-checkbox-button>
-    </el-checkbox-group>
-  </div>
+  <el-container>
+    <el-header>
+      <headbar></headbar>
+    </el-header>
+    <el-main>
+      <el-row>
+        <el-col :span="6"><div>请输入反馈标签，以分号分割</div></el-col>
+        <el-col :span="12"><el-input
+          type="textarea"
+          autosize
+          placeholder="请输入内容"
+          v-model="textarea"></el-input>
+        </el-col>
+      </el-row>
+      <el-row type="flex" justify="center" class="row-with-space">
+        <el-col :span="8"><div id="blocklyDiv3"  style="height: 480px; width: 600px;"></div></el-col>
+      </el-row>
+      <el-row class="row-with-space">
+        <el-checkbox-group  v-model="selectTags">
+          <el-checkbox-button
+            v-for="(tag,index) in tags"
+            :label="tag"
+            :key="index">
+            {{tag}}
+          </el-checkbox-button>
+        </el-checkbox-group>
+      </el-row>
+      <el-row class="row-with-space">
+        <el-button @click="submitReview">提交评语</el-button>
+      </el-row>
+      <el-row class="row-with-space">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :total="1"
+          :pager-count="1"
+          :prev-text="上一个"
+          :next-text="下一个"
+        >
+        </el-pagination>
+      </el-row>
+    </el-main>
+  </el-container>
 </template>
 <script>
+  import ElContainer from "element-ui/packages/container/src/main";
+  import headbar from "./headbar";
+
   export default{
+    components: {
+      headbar,
+      ElContainer},
     name:'review',
       data(){
           return{
@@ -39,38 +70,14 @@
       methods:{
           handleClick: function (tag) {
             console.log(args);
-          }
+          },
+        submitReview: function(){
+          this.$store.commit('changeReviewState',{selectTags:this.selectTags});
+        }
       },
       mounted: function () {
         this.workspace = Blockly.inject('blocklyDiv3',
           {toolbox: '<xml></xml>'});
-        if(this.xmlText){
-          let xmlDom = Blockly.Xml.textToDom(this.xmlText);
-          Blockly.Xml.domToWorkspace(xmlDom,this.workspace);
-        }
-        var blocklyArea = document.getElementById('app');
-        var blocklyDiv = document.getElementById('blocklyDiv3');
-        let self = this;
-        var onresize = function(e) {
-          // Compute the absolute coordinates and dimensions of blocklyArea.
-          var element = blocklyArea;
-          var x = 0;
-          var y = 0;
-          do {
-            x += element.offsetLeft;
-            y += element.offsetTop;
-            element = element.offsetParent;
-          } while (element);
-          // Position blocklyDiv over blocklyArea.
-          blocklyDiv.style.left = x + 'px';
-          blocklyDiv.style.top = y + 'px';
-          blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-          blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-          Blockly.svgResize(self.workspace);
-        };
-        window.addEventListener('resize', onresize, false);
-        onresize();
-        Blockly.svgResize(this.workspace);
       },
       beforeUpdate: function () {
 
@@ -78,5 +85,7 @@
   }
 </script>
 <style scoped>
-
+  .row-with-space{
+    margin-top:10px;
+  }
 </style>
