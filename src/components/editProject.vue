@@ -5,7 +5,7 @@
     </el-header>
     <el-main>
       <h2>创建任务</h2>
-      <input-project-message></input-project-message>
+      <input-project-message ref="inputprojectmessage"></input-project-message>
       <select-block ref="selectblock"/>
       <provide-check-condition ref="providecheckcondition" />
       <el-row>
@@ -48,7 +48,7 @@
         //let provide-check-condition renew checkcode in their data
         this.$refs.providecheckcondition.getCodeFromWorkspace();
         var data = {};
-        data = Object.assign(data,this.$refs.selectblock._data,this.$refs.providecheckcondition._data);
+        data = Object.assign(data,this.$refs.selectblock._data,this.$refs.providecheckcondition._data,this.$refs.inputprojectmessage._data);
         this.$store.commit('changeEditorState',data);
         this.dialogVisible = true;
       }

@@ -16,6 +16,7 @@ export default {
     blocksInEditor:'',
   },
   getters: {
+    projectDescription: (state) => { return state.projectDescription},
     checkedBlocks: (state) => { return state.checkedBlocks},
     checkCode: (state) => { return state.checkCode},
     blocksInEditor: (state) => { return state.blocksInEditor},

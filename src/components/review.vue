@@ -78,6 +78,8 @@
       mounted: function () {
         this.workspace = Blockly.inject('blocklyDiv3',
           {toolbox: '<xml></xml>'});
+        let dom = Blockly.Xml.textToDom(this.xmlText);
+        Blockly.Xml.domToWorkspace(dom,this.workspace);
       },
       beforeUpdate: function () {
 

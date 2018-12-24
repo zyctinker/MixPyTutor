@@ -21,7 +21,7 @@
           <div id="blocklyDiv" height="auto" width="auto"></div>
         </div>
         <el-dialog title="任务简介" :visible.sync="dialogVisible">
-            <el-row><div>制作一个呼吸灯，在2048ms内亮度从最低均匀变化到最高，再从最高均匀变化到最低</div></el-row>
+            <el-row><div>{{projectDescription}}</div></el-row>
             <el-row> <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=j0714ooncb2" allowFullScreen="true" height="320" width="480"></iframe></el-row>
             <el-row><el-button type="primary" @click="dialogVisible = false">确定</el-button></el-row>
         </el-dialog>
@@ -53,10 +53,12 @@
         },
         computed:{
             /*projectName: '',
-            projectDescription: '',
             inputSet: '',
             outputSet: '',
             feedback: '',*/
+            projectDescription: function () {
+              return this.$store.getters['projectDescription'];
+            },
             checkedBlocks:function () {
               return this.$store.getters['checkedBlocks'].slice();
             },

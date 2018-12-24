@@ -66,6 +66,9 @@
             feedback:function () {
               return this.$store.getters['selectTags'];
             },
+            xmlText:function () {
+              return this.$store.getters['blocksInEditor'];
+            }
         },
         mounted: function () {
           console.log(this.feedback)
@@ -100,6 +103,8 @@
           onresize();
           Blockly.svgResize(this.workspace);
           this.dialogVisible = true;
+          let dom = Blockly.Xml.textToDom(this.xmlText);
+          Blockly.Xml.domToWorkspace(dom,this.workspace);
         },
         methods: {
         /**
